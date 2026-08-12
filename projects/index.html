@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Projects | Bradley Schalk</title>
+<meta name="description" content="Engineering projects by Bradley Schalk: aircraft CAD in Siemens NX, glider design and flight testing, industrial robot cell programming, CAD/CAM and machining, reverse engineering, and mechanical design.">
+
+<link rel="canonical" href="https://bradleyschalk.com/projects/">
+<meta property="og:site_name" content="bradleyschalk.com">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Projects | Bradley Schalk">
+<meta property="og:description" content="Aerospace CAD, flight testing, industrial automation, CAD/CAM, machining, and mechanical design.">
+<meta property="og:image" content="https://bradleyschalk.com/assets/images/og-image.jpg">
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="../index.html">
+      <span class="nav__mark" aria-hidden="true">BS</span>
+      Bradley Schalk
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <nav class="nav__links" id="nav-links" aria-label="Main">
+      <a class="nav__link" href="../index.html">Home</a>
+      <a class="nav__link" href="index.html" aria-current="page">Projects</a>
+      <a class="nav__link" href="../about.html">About</a>
+      <a class="nav__link" href="../resume.html">Resume</a>
+      <a class="nav__link" href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="phead">
+    <div class="wrap">
+      <span class="eyebrow">Work</span>
+      <h1>Projects</h1>
+      <p class="lead">
+        Aerospace design and CAD alongside production hardware, automation, and machining.
+        The common thread is carrying engineering past the model &mdash; building it,
+        testing it, and finding out what actually happens.
+      </p>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="pgrid">
+
+        <!-- ============================================================
+             PROJECT CARD TEMPLATE — copy this block to add a new project.
+             1. Duplicate one <article class="pcard"> ... </article> below
+             2. Point the <img> at assets/images/<your-project>/<name>-thumb.webp
+                (add pcard__media--contain on the div for CAD renders)
+             3. Point the title link at your new page in this folder
+             4. Copy an existing project page as the starting HTML
+             ============================================================ -->
+
+        <!-- 1 — FANUC automation cell (flagship) -->
+        <article class="pcard pcard--flagship">
+          <div class="pcard__media">
+            <img src="../assets/images/robot-cell/cell-overview-thumb.webp"
+                 alt="FANUC R-1000iA/100F robot and Yama Seiki BM-1600MAX vertical machining center in the automated track shoe cell."
+                 loading="lazy" decoding="async" width="820" height="615">
+          </div>
+          <div class="pcard__body">
+            <span class="eyebrow">Automation &middot; Controls</span>
+            <h3 class="pcard__title">
+              <a href="robot-cell.html">FANUC Robot &amp; VMC Automated Manufacturing Cell</a>
+            </h3>
+            <p class="pcard__desc">
+              Programmed and helped set up an automated cell in which a FANUC
+              R-1000iA/100F six-axis robot moves track shoes between material racks and a
+              Yama Seiki BM-1600MAX machining center. Included TP programming and
+              RoboGuide simulation across four part sizes, PLC ladder logic and safety
+              interlocks, custom end-of-arm tooling, and a 3D-printed mount for a
+              vision-based clamping check.
+            </p>
+            <div class="pcard__foot">
+              <ul class="tags">
+                <li class="tag tag--accent">FANUC TP</li>
+                <li class="tag">RoboGuide</li>
+                <li class="tag">PLC ladder logic</li>
+                <li class="tag">Sensors &amp; I/O</li>
+                <li class="tag">CAD / CAM</li>
+                <li class="tag">Machine vision</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <div class="pcol">
+          <article class="pcard">
+            <div class="pcard__media pcard__media--fit pcard__media--cine">
+              <img src="../assets/images/b36-peacemaker/nx-render-front-quarter-thumb.webp"
+                   alt="Front-quarter Siemens NX render of the B-36 Peacemaker model above a cloud layer."
+                   loading="lazy" decoding="async" width="820" height="434">
+            </div>
+            <div class="pcard__body">
+              <span class="eyebrow">Aerospace &middot; CAD</span>
+              <h3 class="pcard__title"><a href="b36-peacemaker.html">B-36 Peacemaker &mdash; Siemens NX Aircraft Model</a></h3>
+              <p class="pcard__desc">
+                A high-fidelity parametric recreation of the Convair B-36 built in Siemens
+                NX, with constrained assemblies, moving mechanisms, major aircraft systems,
+                rendered views, and an engineering animation.
+              </p>
+              <div class="pcard__foot">
+                <ul class="tags">
+                  <li class="tag tag--accent">Siemens NX</li>
+                  <li class="tag">Large assemblies</li>
+                  <li class="tag">Mechanisms</li>
+                  <li class="tag">Animation</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="pcard">
+            <div class="pcard__media pcard__media--fit pcard__media--wide">
+              <img src="../assets/images/glider/cover-card.webp"
+                   alt="The fabricated hand-launched glider prototype seen head-on, showing the full triangular planform and the centre vertical fin."
+                   loading="lazy" decoding="async" width="1100" height="1081">
+            </div>
+            <div class="pcard__body">
+              <span class="eyebrow">Aerospace &middot; Design-build-test</span>
+              <h3 class="pcard__title"><a href="glider.html">Hand-Launched Glider &mdash; Design, Fabrication &amp; Flight Testing</a></h3>
+              <p class="pcard__desc">
+                Led a team through designing a glider from scratch, fabricating the
+                prototype, and refining its stability through iterative testing &mdash;
+                reaching a measured 179 ft flight over 6.35 seconds from a ground-level
+                launch.
+              </p>
+              <div class="pcard__foot">
+                <ul class="tags">
+                  <li class="tag tag--accent">Team lead</li>
+                  <li class="tag">CAD</li>
+                  <li class="tag">Fabrication</li>
+                  <li class="tag">Flight testing</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="pcard">
+            <div class="pcard__media pcard__media--cad">
+              <img src="../assets/images/cleaning-machine/machine-cad-thumb.webp"
+                   alt="Full-scale CAD reconstruction of the pipe-cleaning agitation machine."
+                   loading="lazy" decoding="async" width="645" height="820">
+            </div>
+            <div class="pcard__body">
+              <span class="eyebrow">CAD &middot; Mechanical design</span>
+              <h3 class="pcard__title"><a href="cleaning-machine.html">Pipe-Cleaning Agitation Machine</a></h3>
+              <p class="pcard__desc">
+                Built a full-scale CAD model of a large industrial cleaning machine entirely
+                from hand measurements taken off the equipment, with no drawings to work
+                from.
+              </p>
+              <div class="pcard__foot">
+                <ul class="tags">
+                  <li class="tag">CAD</li>
+                  <li class="tag">Hand measurement</li>
+                  <li class="tag">Assemblies</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="pcol">
+          <article class="pcard">
+            <div class="pcard__media">
+              <img src="../assets/images/conveyor/hero-physical-thumb.webp"
+                   alt="Physical furnace conveyor roller and chain system used as the basis for the CAD/CAM replacement work."
+                   loading="lazy" decoding="async" width="820" height="615">
+            </div>
+            <div class="pcard__body">
+              <span class="eyebrow">Manufacturing &middot; CAD / CAM</span>
+              <h3 class="pcard__title"><a href="conveyor.html">Furnace Conveyor Belt System</a></h3>
+              <p class="pcard__desc">
+                Modeled a furnace conveyor and its components from existing hardware,
+                produced the CAM to machine them, built custom vise jaws to hold awkward
+                parts, and assembled physical conveyor segments.
+              </p>
+              <div class="pcard__foot">
+                <ul class="tags">
+                  <li class="tag">CAD assemblies</li>
+                  <li class="tag">CAM</li>
+                  <li class="tag">CNC machining</li>
+                  <li class="tag">Workholding</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="pcard">
+            <div class="pcard__media">
+              <img src="../assets/images/furnace-part/original-vs-replacement-cover-thumb.webp"
+                   alt="Broken furnace component beside its newly machined replacement, with the fractured flange pieces in front."
+                   loading="lazy" decoding="async" width="820" height="513">
+            </div>
+            <div class="pcard__body">
+              <span class="eyebrow">Manufacturing &middot; Reverse engineering</span>
+              <h3 class="pcard__title"><a href="furnace-part.html">Furnace Replacement Component</a></h3>
+              <p class="pcard__desc">
+                A heat-treatment furnace component broke with no drawings available. I
+                measured the damaged part, rebuilt its geometry in CAD, and supported
+                manufacture of a machined replacement.
+              </p>
+              <div class="pcard__foot">
+                <ul class="tags">
+                  <li class="tag">Hand measurement</li>
+                  <li class="tag">CAD</li>
+                  <li class="tag">Machining</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="pcard">
+            <div class="pcard__media pcard__media--cad">
+              <img src="../assets/images/paint-holder/nozzle-holder-cad-thumb.webp"
+                   alt="CAD model of the paint robot nozzle holder."
+                   loading="lazy" decoding="async" width="820" height="804">
+            </div>
+            <div class="pcard__body">
+              <span class="eyebrow">CAD &middot; Mechanical design</span>
+              <h3 class="pcard__title"><a href="paint-holder.html">Paint Robot Nozzle Holder</a></h3>
+              <p class="pcard__desc">
+                A robotic paint gun used on track idlers drifted off its intended position
+                over time. I designed a rigid holder to keep the nozzle steady and holding
+                its aim.
+              </p>
+              <div class="pcard__foot">
+                <ul class="tags">
+                  <li class="tag">CAD</li>
+                  <li class="tag">Design for rigidity</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= FURTHER PROJECTS ========================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Further work</span>
+        <h2>Other projects</h2>
+        <p>Work without a full write-up yet. Media and detail to follow.</p>
+      </div>
+
+      <dl class="specs">
+        <div class="specs__row">
+          <dt class="specs__key">Model rocket</dt>
+          <dd class="specs__val">Designed and iterated a model rocket in OpenRocket, simulating flight performance against a 325 ft target altitude and validating the design with a live flight test that reached approximately 360 ft.</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Liquid Rocketry at Illinois</dt>
+          <dd class="specs__val">Engine subgroup &mdash; engine design discussions and propulsion subsystem analysis.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ==================== ADDITIONAL EXPERIENCE ======================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Also on the floor</span>
+        <h2>Additional hands-on experience</h2>
+        <p>
+          Smaller work from the Metamora Industries internship. Not headline engineering,
+          but it is where a lot of the practical knowledge came from.
+        </p>
+      </div>
+
+      <dl class="specs">
+        <div class="specs__row">
+          <dt class="specs__key">Vehicle maintenance</dt>
+          <dd class="specs__val">Replaced and troubleshot backup cameras, replaced speakers, repaired windshield washer fluid systems, replaced batteries</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Plant infrastructure</dt>
+          <dd class="specs__val">Ran Ethernet cabling through assembly-line areas and connected production-monitoring cameras</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Facility support</dt>
+          <dd class="specs__val">Scrapped and recycled barrels from blast-machine operations; cleaned and organized steel yards and material storage; general shop support</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Office work</dt>
+          <dd class="specs__val">Data entry, file organization, and maintaining company records and documents</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span>&copy; <span id="year">2026</span> Bradley Schalk &middot; bradleyschalk.com</span>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="index.html">Projects</a>
+      <a href="../about.html">About</a>
+      <a href="../resume.html">Resume</a>
+      <a href="mailto:bradschalk06@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/bradley-schalk" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="../js/script.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

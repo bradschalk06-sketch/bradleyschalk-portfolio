@@ -1,0 +1,1019 @@
+/* ==========================================================================
+   Bradley Schalk — Engineering Portfolio
+   Design tokens and shared components.
+   Edit colors and spacing here; every page reads from this file.
+   ========================================================================== */
+
+:root {
+  /* --- Surface ---------------------------------------------------------- */
+  --bg:          #0F1319;
+  --surface:     #161B23;
+  --surface-2:   #1C232D;
+  --panel-light: #EEF1F4;   /* backing for CAD/CAM screenshots (white bg) */
+  --line:        #262F3B;
+  --line-strong: #36404F;
+
+  /* --- Text ------------------------------------------------------------- */
+  --text:        #E8ECF1;
+  --text-dim:    #A8B4C2;
+  --text-faint:  #7B8896;
+
+  /* --- Accent ----------------------------------------------------------
+     One restrained accent. To switch to a UIUC orange, change these three
+     values to #E84A27 / rgba(232,74,39,.14) / rgba(232,74,39,.42).        */
+  --accent:      #4FA3D9;
+  --accent-soft: rgba(79, 163, 217, .13);
+  --accent-line: rgba(79, 163, 217, .42);
+
+  /* --- Type ------------------------------------------------------------- */
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system,
+               "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo,
+               Consolas, monospace;
+
+  /* --- Layout ----------------------------------------------------------- */
+  --wrap:      1180px;
+  --wrap-text: 760px;
+  --nav-h:     64px;
+  --radius:    3px;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 16.5px;
+  line-height: 1.65;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+img, video { max-width: 100%; display: block; }
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 600;
+  line-height: 1.18;
+  letter-spacing: -0.018em;
+  color: #F2F5F8;
+}
+
+h1 { font-size: clamp(2.1rem, 4.6vw, 3.15rem); }
+h2 { font-size: clamp(1.55rem, 2.9vw, 2.05rem); }
+h3 { font-size: 1.16rem; letter-spacing: -0.01em; }
+h4 { font-size: 1rem; letter-spacing: 0; }
+
+p { margin: 0 0 1.05em; }
+p:last-child { margin-bottom: 0; }
+
+ul, ol { margin: 0 0 1.05em; padding-left: 1.15em; }
+li { margin-bottom: .42em; }
+li:last-child { margin-bottom: 0; }
+
+hr { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+::selection { background: var(--accent-line); color: #fff; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 200;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #06121C;
+  font-weight: 600;
+  border-radius: var(--radius);
+  transition: top .15s ease;
+}
+.skip-link:focus { top: 12px; text-decoration: none; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ==========================================================================
+   Layout primitives
+   ========================================================================== */
+
+.wrap {
+  width: 100%;
+  max-width: var(--wrap);
+  margin-left: auto;
+  margin-right: auto;
+  margin-inline: auto;
+  padding-left: 28px;
+  padding-right: 28px;
+  padding-inline: 28px;
+}
+
+.section { padding-block: 84px; }
+.section + .section { border-top: 1px solid var(--line); }
+.section--tight { padding-block: 60px; }
+
+.section__head { margin-bottom: 42px; max-width: var(--wrap-text); }
+.section__head h2 { margin-bottom: .5em; }
+.section__head p { color: var(--text-dim); margin-bottom: 0; }
+
+/* Mono label used for eyebrows, captions, and data keys.
+   This is the site's main typographic signal — keep it small and spaced. */
+.eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .705rem;
+  font-weight: 500;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.eyebrow--dim { color: var(--text-faint); }
+
+.lead {
+  font-size: 1.13rem;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+
+.prose { max-width: var(--wrap-text); }
+.prose h3 { margin: 2.1em 0 .65em; }
+.prose h3:first-child { margin-top: 0; }
+.prose ul { color: var(--text-dim); }
+.prose p { color: var(--text-dim); }
+.prose strong { color: var(--text); font-weight: 600; }
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 22px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease, color .15s ease;
+}
+.btn:hover { border-color: var(--accent); color: #fff; text-decoration: none; }
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #06121C;
+  font-weight: 600;
+}
+.btn--primary:hover { background: #63B2E3; border-color: #63B2E3; color: #06121C; }
+
+.btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-h);
+  background: rgba(15, 19, 25, .88);
+  backdrop-filter: saturate(150%) blur(12px);
+  -webkit-backdrop-filter: saturate(150%) blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.nav__brand:hover { text-decoration: none; color: #fff; }
+
+.nav__mark {
+  display: grid;
+  place-items: center;
+  width: 30px; height: 30px;
+  border: 1px solid var(--accent-line);
+  border-radius: var(--radius);
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+.nav__links { display: flex; align-items: center; gap: 4px; }
+
+.nav__link {
+  padding: 8px 13px;
+  border-radius: var(--radius);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: .745rem;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: color .15s ease, background-color .15s ease;
+}
+.nav__link:hover { color: var(--text); background: var(--surface-2); text-decoration: none; }
+.nav__link[aria-current="page"] { color: var(--accent); }
+
+.nav__toggle {
+  display: none;
+  width: 40px; height: 40px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--text);
+  cursor: pointer;
+}
+.nav__toggle svg { width: 19px; height: 19px; }
+.nav__toggle .icon-close { display: none; }
+.nav__toggle[aria-expanded="true"] .icon-open  { display: none; }
+.nav__toggle[aria-expanded="true"] .icon-close { display: block; }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero { padding-block: 92px 78px; }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.02fr .98fr;
+  gap: 60px;
+  align-items: start;
+}
+
+/* The hero itself is the one place the two columns should centre on each other. */
+.hero .hero__grid { align-items: center; }
+
+.hero h1 { margin-bottom: 20px; }
+
+.hero__role {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 22px;
+}
+
+.hero__lead {
+  font-size: 1.1rem;
+  line-height: 1.62;
+  color: var(--text-dim);
+  max-width: 52ch;
+  margin-bottom: 32px;
+}
+
+.hero__figure {
+    margin: 0;
+    width: 100%;
+    max-width: 320px;
+    justify-self: end;
+}
+/* Portrait photograph, so no fixed ratio box: height follows the image and the
+   frame wraps it exactly. A forced aspect-ratio would letterbox a 4:5 photo and
+   leave the dark bands this used to show. */
+.hero__figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+}
+
+/* ==========================================================================
+   Spec block — mono key/value rows. Used on cards and project pages.
+   ========================================================================== */
+
+.specs {
+  margin: 0;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: .775rem;
+  line-height: 1.5;
+}
+
+.specs__row {
+  display: grid;
+  grid-template-columns: 138px 1fr;
+  gap: 18px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.specs__key {
+  color: var(--text-faint);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  font-size: .705rem;
+  padding-top: 1px;
+}
+.specs__val { color: var(--text-dim); margin: 0; }
+
+/* ==========================================================================
+   Tags
+   ========================================================================== */
+
+.tags { display: flex; flex-wrap: wrap; gap: 7px; list-style: none; margin: 0; padding: 0; }
+
+.tag {
+  display: inline-block;
+  padding: 4px 10px;
+  border: 1px solid var(--line-strong);
+  border-radius: 2px;
+  background: var(--surface);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: .69rem;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  margin: 0;
+}
+.tag--accent { border-color: var(--accent-line); background: var(--accent-soft); color: var(--accent); }
+
+/* ==========================================================================
+   Project cards
+   ========================================================================== */
+
+/* align-items: start is what keeps a short card short. Grid items stretch to
+   the row height by default, which combined with `.pcard__foot { margin-top:
+   auto }` was pushing the tags of shorter cards to the bottom of a tall row and
+   leaving a dead band in between. Cards now size to their own content. */
+.pgrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px;
+  align-items: start;
+}
+
+/* Independent column stacks.
+   A plain two-column grid shares row heights across columns, so a short card
+   is pinned to a row sized by its taller neighbour and the gap underneath it
+   grows. Each column is its own flex stack instead, so a card only ever waits
+   for the card directly above it in the SAME column. The flagship card stays a
+   direct grid child and still spans both columns. */
+.pcol {
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  min-width: 0;
+}
+
+.pcard {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: border-color .18s ease, transform .18s ease;
+}
+.pcard:hover { border-color: var(--line-strong); transform: translateY(-2px); }
+.pcard:focus-within { border-color: var(--accent); }
+
+.pcard__media { position: relative; background: var(--surface-2); }
+.pcard__media img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+}
+/* CAD renders keep the white canvas they were exported on. A white block
+   inside a dark card is intentional — it separates engineering documentation
+   from site photography, and it means the geometry is shown exactly as
+   exported rather than cut out of its background. */
+.pcard__media--contain,
+.pcard__media--cad { background: #FFFFFF; }
+.pcard__media--contain img,
+.pcard__media--cad img { object-fit: contain; padding: 12px; }
+.pcard__media--cad img { aspect-ratio: 4 / 3; }
+
+/* Dark `contain` — for photographs and renders whose full geometry has to
+   read at card size but which carry their own background (sky, benchtop). */
+.pcard__media--fit { background: var(--surface-2); }
+.pcard__media--fit img { object-fit: contain; padding: 8px; }
+
+/* Frame shapes, chosen per project to sit close to the media's own ratio so
+   `contain` leaves as little dead space as possible. */
+.pcard__media--cine img {
+    height: 285px;
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center;
+}
+
+.pcard__media--wide img {
+    height: 305px;
+    aspect-ratio: auto;
+    object-fit: contain;
+    object-position: center;
+}   
+
+/* About portrait. The source is 1244x1555 (4:5), so the frame is set to the
+   same ratio: `contain` then fills it exactly with no letterboxing and no
+   crop. Capped in width so it sits with the information block beneath it. */
+/* The frame wraps the photograph rather than boxing it: height is driven by
+   the image, so there is no dark area above or below it and no forced card
+   height. The details block sits one normal gap underneath. */
+.portrait { margin: 0 0 22px; }
+.portrait img {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  aspect-ratio: auto;
+  min-height: 0;
+  object-fit: contain;
+  margin-inline: auto;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+}
+
+/* Portrait + details are one compact stack pinned to the top of the column,
+   level with the Background heading, rather than centred against the much
+   longer text on the left. */
+.about-side { align-self: start; }
+
+.pcard__body { padding: 24px 24px 26px; display: flex; flex-direction: column; flex: 1; }
+.pcard__body .eyebrow { margin-bottom: 10px; }
+
+.pcard__title { font-size: 1.24rem; margin-bottom: 10px; }
+.pcard__title a { color: inherit; }
+.pcard__title a:hover { color: var(--accent); text-decoration: none; }
+/* Make the whole card clickable while keeping a real, focusable link. */
+.pcard__title a::after { content: ""; position: absolute; inset: 0; }
+.pcard { position: relative; }
+
+.pcard__desc { color: var(--text-dim); font-size: .95rem; margin-bottom: 18px; }
+.pcard__foot { margin-top: auto; }
+
+/* Flagship card: full width, media beside content */
+.pcard--flagship { grid-column: 1 / -1; }
+
+@media (min-width: 861px) {
+  .pcard--flagship { flex-direction: row; align-items: stretch; }
+  .pcard--flagship .pcard__media { flex: 1 1 54%; min-width: 0; }
+  .pcard--flagship .pcard__media img { height: 100%; aspect-ratio: auto; min-height: 340px; }
+  .pcard--flagship .pcard__media--fit img { object-fit: contain; }
+  .pcard--flagship .pcard__body { flex: 1 1 46%; justify-content: center; padding: 34px 32px; }
+  .pcard--flagship .pcard__title { font-size: 1.52rem; }
+}
+
+/* ==========================================================================
+   Galleries
+   ========================================================================== */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+  gap: 20px;
+}
+.gallery--wide { grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); }
+.gallery--parts { grid-template-columns: repeat(auto-fill, minmax(192px, 1fr)); gap: 16px; }
+
+.shot { margin: 0; }
+
+.shot__btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface-2);
+  cursor: zoom-in;
+  overflow: hidden;
+  transition: border-color .15s ease;
+}
+.shot__btn:hover { border-color: var(--accent); }
+
+.shot__btn img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: opacity .15s ease;
+}
+.shot__btn:hover img { opacity: .9; }
+
+/* CAD/CAM screenshots have white backgrounds — seat them on a light panel
+   and contain rather than crop, so geometry is never cut off. */
+.shot--cad .shot__btn { background: var(--panel-light); }
+.shot--cad .shot__btn img { object-fit: contain; padding: 12px; }
+
+.shot--tall .shot__btn img { aspect-ratio: 3 / 4; }
+
+.shot figcaption {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: .735rem;
+  line-height: 1.5;
+  color: var(--text-faint);
+}
+
+/* ==========================================================================
+   Comparison rail — CAD -> machined -> assembled, and problem -> result.
+   Order carries real meaning here, so the connector is part of the content.
+   ========================================================================== */
+
+.rail {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.rail__step { padding: 22px 24px; border-right: 1px solid var(--line); }
+.rail__step:last-child { border-right: 0; }
+
+.rail__num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 9px;
+}
+.rail__step h4 { margin-bottom: 6px; }
+.rail__step p {
+  margin: 0;
+  font-size: .875rem;
+  line-height: 1.55;
+  color: var(--text-faint);
+}
+
+@media (max-width: 640px) {
+  .rail__step { border-right: 0; border-bottom: 1px solid var(--line); }
+  .rail__step:last-child { border-bottom: 0; }
+}
+
+/* ==========================================================================
+   Metrics — measured results. Used where real numbers exist and matter.
+   ========================================================================== */
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.metric { background: var(--bg); padding: 28px 26px; }
+
+.metric__value {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 4.6vw, 2.75rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.metric__unit {
+  font-size: .42em;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-left: .38em;
+}
+
+.metric__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .705rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ==========================================================================
+   Video
+   ========================================================================== */
+
+.videos { display: grid; gap: 30px; }
+.videos--pair { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); align-items: start; }
+
+.vfig { margin: 0; }
+
+.vfig video {
+  width: 100%;
+  height: auto;
+  background: #000;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+}
+
+/* The cycle and placement clips are portrait phone footage. Cap their width
+   so the browser never upscales them past their native resolution. */
+.vfig--portrait video { max-width: 420px; margin-inline: auto; }
+
+.vfig figcaption {
+  margin-top: 12px;
+  font-family: var(--font-mono);
+  font-size: .755rem;
+  line-height: 1.55;
+  color: var(--text-faint);
+}
+.vfig figcaption b {
+  display: block;
+  color: var(--text-dim);
+  font-weight: 500;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: .705rem;
+  margin-bottom: 5px;
+}
+
+/* ==========================================================================
+   Skills
+   ========================================================================== */
+
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(238px, 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: var(--radius); }
+
+.skills__group { background: var(--bg); padding: 26px 24px; }
+.skills__group h3 {
+  font-family: var(--font-mono);
+  font-size: .73rem;
+  font-weight: 500;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 14px;
+}
+.skills__group ul { list-style: none; margin: 0; padding: 0; }
+.skills__group li {
+  color: var(--text-dim);
+  font-size: .915rem;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(38, 47, 59, .6);
+}
+.skills__group li:last-child { border-bottom: 0; }
+
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(232px, 1fr)); gap: 18px; }
+
+.contact-card {
+  display: block;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text);
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.contact-card:hover { border-color: var(--accent); background: var(--surface-2); text-decoration: none; }
+.contact-card .eyebrow { margin-bottom: 8px; }
+.contact-card span.value {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: .875rem;
+  color: var(--text-dim);
+  word-break: break-word;
+}
+
+/* ==========================================================================
+   Page header (project + interior pages)
+   ========================================================================== */
+
+.phead { padding-block: 58px 44px; border-bottom: 1px solid var(--line); }
+.phead h1 { margin-bottom: 18px; }
+.phead .lead { max-width: 66ch; margin-bottom: 26px; }
+.phead .tags { margin-bottom: 30px; }
+
+.backlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: .735rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 26px;
+}
+.backlink:hover { color: var(--accent); text-decoration: none; }
+
+.phero { margin: 0 0 6px; }
+.phero img {
+  width: 100%;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.phero--natural img {
+  aspect-ratio: auto;
+  max-height: 640px;
+  object-fit: contain;
+  background: var(--surface);
+}
+
+.phero figcaption {
+  margin-top: 10px;
+  font-family: var(--font-mono);
+  font-size: .735rem;
+  color: var(--text-faint);
+}
+
+.pagenav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  justify-content: space-between;
+  align-items: center;
+  padding-block: 34px;
+  border-top: 1px solid var(--line);
+}
+
+/* ==========================================================================
+   Notes / callouts
+   ========================================================================== */
+
+.note {
+  border-left: 2px solid var(--accent-line);
+  background: var(--accent-soft);
+  padding: 16px 20px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: .93rem;
+  color: var(--text-dim);
+}
+.note p { margin-bottom: .6em; }
+.note p:last-child { margin-bottom: 0; }
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+.footer { border-top: 1px solid var(--line); padding-block: 34px; }
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: .73rem;
+  letter-spacing: .06em;
+  color: var(--text-faint);
+}
+.footer__links { display: flex; flex-wrap: wrap; gap: 20px; }
+.footer__links a { color: var(--text-faint); }
+.footer__links a:hover { color: var(--accent); }
+
+/* ==========================================================================
+   Lightbox
+   ========================================================================== */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  background: rgba(8, 11, 15, .95);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+.lightbox[open], .lightbox.is-open { display: grid; grid-template-rows: auto 1fr auto; }
+
+.lightbox__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.lightbox__count {
+  font-family: var(--font-mono);
+  font-size: .74rem;
+  letter-spacing: .12em;
+  color: var(--text-faint);
+}
+
+.lightbox__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  min-height: 0;
+}
+.lightbox__stage img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+/* White-background CAD art needs a light backing so it reads as a drawing. */
+.lightbox__stage img.is-cad { background: var(--panel-light); padding: 8px; }
+
+.lightbox__caption {
+  padding: 16px 22px 26px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  line-height: 1.55;
+  color: var(--text-dim);
+  max-width: 78ch;
+  margin-inline: auto;
+}
+
+.lb-btn {
+  display: grid;
+  place-items: center;
+  width: 42px; height: 42px;
+  padding: 0;
+  background: rgba(28, 35, 45, .82);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color .15s ease, background-color .15s ease;
+}
+.lb-btn:hover { border-color: var(--accent); background: var(--surface-2); }
+.lb-btn svg { width: 20px; height: 20px; }
+
+.lightbox__prev, .lightbox__next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+.lightbox__prev { left: 18px; }
+.lightbox__next { right: 18px; }
+
+body.lb-open { overflow: hidden; }
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 980px) {
+    .hero__grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero {
+        padding-block: 62px 56px;
+    }
+
+    /* keep the portrait compact and centred once the hero stacks — a
+       full-width portrait photo would be enormous on a phone */
+    .hero__figure {
+        max-width: 260px;
+        justify-self: center;
+        margin-inline: auto;
+    }
+}
+
+@media (max-width: 860px) {
+  .pgrid { grid-template-columns: 1fr; }
+  /* display:contents lifts the cards out of their columns so they stack as a
+     single list in source order, with the grid's own gap between them. */
+  .pcol { display: contents; }
+  .section { padding-block: 62px; }
+
+  .nav__toggle { display: inline-grid; }
+  .nav__links {
+    position: absolute;
+    top: var(--nav-h);
+    left: 0;
+    right: 0;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    padding: 10px 18px 18px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav__links.is-open { display: flex; }
+  .nav__link { padding: 13px 8px; border-bottom: 1px solid var(--line); font-size: .8rem; }
+  .nav__links .btn { margin-top: 14px; justify-content: center; }
+}
+
+@media (max-width: 640px) {
+  body { font-size: 16px; }
+  .wrap { padding-left: 20px; padding-right: 20px; padding-inline: 20px; }
+  .section { padding-block: 52px; }
+  .hero { padding-block: 46px 44px; }
+
+  .specs__row { grid-template-columns: 1fr; gap: 3px; padding: 11px 0; }
+
+  .portrait img { max-width: 240px; }
+  .hero__figure { max-width: 240px; }
+
+  /* keep every card frame landscape and modest on a narrow screen */
+  .pcard__media img { aspect-ratio: 16 / 10; }
+  .pcard__media--cine img {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+
+  .pcard__media--wide img {
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+  .pcard__media--cad img {
+        aspect-ratio: 4 / 3;
+    }
+
+  .gallery, .gallery--wide { grid-template-columns: 1fr; }
+  .gallery--parts { grid-template-columns: repeat(auto-fill, minmax(148px, 1fr)); }
+
+  .videos--pair { grid-template-columns: 1fr; }
+  .vfig--portrait video { max-width: 100%; }
+
+  .lightbox__prev { left: 10px; }
+  .lightbox__next { right: 10px; }
+  .lb-btn { width: 38px; height: 38px; }
+  .lightbox__stage { padding: 12px; }
+
+  .btn { padding: 11px 18px; font-size: .74rem; }
+  .btn-row .btn { flex: 1 1 auto; justify-content: center; }
+}
+
+/* ==========================================================================
+   Motion / print
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .001ms !important;
+  }
+  .pcard:hover { transform: none; }
+}
+
+@media print {
+  .nav, .footer, .lightbox, .btn-row { display: none; }
+  body { background: #fff; color: #000; }
+}

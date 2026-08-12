@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Pipe-Cleaning Agitation Machine &mdash; CAD Reconstruction | Bradley Schalk</title>
+<meta name="description" content="Full-scale CAD reconstruction of a large industrial pipe-cleaning agitation machine, modeled entirely from hand measurements taken off the physical equipment.">
+
+<link rel="canonical" href="https://bradleyschalk.com/projects/cleaning-machine.html">
+<meta property="og:site_name" content="bradleyschalk.com">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Pipe-Cleaning Agitation Machine — CAD Reconstruction">
+<meta property="og:description" content="A large industrial machine measured by hand and rebuilt at full scale in CAD, with no drawings to work from.">
+<meta property="og:image" content="https://bradleyschalk.com/assets/images/og-image.jpg">
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="../index.html">
+      <span class="nav__mark" aria-hidden="true">BS</span>
+      Bradley Schalk
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <nav class="nav__links" id="nav-links" aria-label="Main">
+      <a class="nav__link" href="../index.html">Home</a>
+      <a class="nav__link" href="index.html" aria-current="page">Projects</a>
+      <a class="nav__link" href="../about.html">About</a>
+      <a class="nav__link" href="../resume.html">Resume</a>
+      <a class="nav__link" href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="phead">
+    <div class="wrap">
+      <a class="backlink" href="index.html">&larr; All projects</a>
+      <span class="eyebrow">CAD reconstruction</span>
+      <h1>Pipe-Cleaning Agitation Machine</h1>
+      <p class="lead">
+        Built a full-scale CAD model of a large industrial cleaning machine from hand
+        measurements taken directly off the equipment, with no existing engineering
+        drawings to work from.
+      </p>
+      <ul class="tags">
+        <li class="tag tag--accent">Full-scale CAD</li>
+        <li class="tag">Hand measurement</li>
+        <li class="tag">Assemblies</li>
+        <li class="tag">Structural modeling</li>
+      </ul>
+
+      <dl class="specs">
+        <div class="specs__row">
+          <dt class="specs__key">Machine</dt>
+          <dd class="specs__val">Industrial pipe-cleaning machine that rocks and agitates piping inside a cleaning bath</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Reference</dt>
+          <dd class="specs__val">The physical machine only &mdash; measured by hand, no drawings</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Modeled</dt>
+          <dd class="specs__val">The main machine structure at full scale</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">My role</dt>
+          <dd class="specs__val">Measurement, CAD modeling, assembly</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <figure class="phero phero--natural">
+        <img src="../assets/images/cleaning-machine/machine-back-full.webp"
+             srcset="../assets/images/cleaning-machine/machine-back-thumb.webp 820w,
+                     ../assets/images/cleaning-machine/machine-back-full.webp 1800w"
+             sizes="(max-width: 1180px) 94vw, 1124px"
+             alt="Looking down into the cleaning bath from the back of the agitation machine, between the heavy steel rocking arms toward the drive block at the centre."
+             width="1800" height="1350" fetchpriority="high" decoding="async">
+        <figcaption>The physical machine that served as the only reference for the CAD model, seen from the back.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================== OVERVIEW ============================ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Process</span>
+        <h2>Physical machine to full-scale model</h2>
+      </div>
+
+      <div class="rail">
+        <div class="rail__step">
+          <span class="rail__num">Step 01</span>
+          <h4>Physical machine</h4>
+          <p>A large, in-service industrial machine that holds piping and agitates it inside a cleaning bath.</p>
+        </div>
+        <div class="rail__step">
+          <span class="rail__num">Step 02</span>
+          <h4>Hand measurements</h4>
+          <p>Dimensions taken directly off the equipment, working around a wet, corroded, live installation.</p>
+        </div>
+        <div class="rail__step">
+          <span class="rail__num">Step 03</span>
+          <h4>Full-scale CAD</h4>
+          <p>The main structure rebuilt at full scale and assembled in CAD.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <span class="eyebrow">The engineering problem</span>
+      <h2>Modeling something nobody documented</h2>
+      <p>
+        The machine holds piping and rocks it to agitate the pipe inside a cleaning bath.
+        It works, but it exists only as hardware &mdash; there were no engineering drawings
+        to model from, so every dimension in the CAD model came from a measurement I took
+        by hand off the actual machine.
+      </p>
+      <p>
+        That is a different exercise from modeling a part on a bench. The machine is large,
+        much of it sits over or in a bath, and surfaces are corroded and painted over. You
+        have to decide what to measure, what to derive from symmetry, and how to check
+        yourself as you go, because a small error at one end of a frame becomes a visible
+        error at the other.
+      </p>
+      <p>
+        <strong>The resulting model covers the main machine structure at full scale.</strong>
+        The remaining major component is the front rack, which would hold the piping placed
+        into the bath.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================== GALLERY ============================ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Reference and result</span>
+        <h2>The machine, and the model</h2>
+        <p>Photographs taken from three sides, alongside the CAD reconstruction built from them.</p>
+      </div>
+
+      <div class="gallery gallery--wide" data-gallery>
+        <figure class="shot shot--tall">
+          <button class="shot__btn" type="button" data-lightbox
+                  data-full="../assets/images/cleaning-machine/machine-side-full.webp">
+            <img src="../assets/images/cleaning-machine/machine-side-thumb.webp"
+                 alt="Side view of the agitation machine showing the long steel frame running beside the bath, with hoses overhead."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>Side of the machine, showing the frame running the length of the cleaning bath.</figcaption>
+        </figure>
+
+        <figure class="shot shot--tall">
+          <button class="shot__btn" type="button" data-lightbox
+                  data-full="../assets/images/cleaning-machine/machine-front-full.webp">
+            <img src="../assets/images/cleaning-machine/machine-front-thumb.webp"
+                 alt="Front view of the machine, with the structural frame standing above the surface of the cleaning bath."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>Front of the machine at the bath edge.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <button class="shot__btn" type="button" data-lightbox
+                  data-full="../assets/images/cleaning-machine/machine-back-full.webp">
+            <img src="../assets/images/cleaning-machine/machine-back-thumb.webp"
+                 alt="View from the back of the machine looking down into the bath between the rocking arms toward the central drive block."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>Back of the machine, looking down between the rocking arms into the bath.</figcaption>
+        </figure>
+
+        <figure class="shot shot--cad shot--tall">
+          <button class="shot__btn" type="button" data-lightbox data-cad
+                  data-full="../assets/images/cleaning-machine/machine-cad-full.webp">
+            <img src="../assets/images/cleaning-machine/machine-cad-thumb.webp"
+                 alt="Full-scale CAD model of the agitation machine showing the frame, uprights, cross members, and drive components."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>Full-scale CAD reconstruction of the pipe-cleaning agitation machine.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose">
+      <span class="eyebrow">Outcome</span>
+      <h2>What I took from it</h2>
+      <ul>
+        <li>
+          <strong>Measurement strategy matters more than measurement count.</strong>
+          Establishing a few reliable datums first made everything downstream consistent.
+        </li>
+        <li>
+          <strong>Model as you measure.</strong> Building the CAD alongside the measuring
+          exposed gaps while I was still standing at the machine, instead of after.
+        </li>
+        <li>
+          <strong>Old equipment is rarely square.</strong> Deciding when to model the
+          nominal design intent versus the as-built condition is a judgement call you have
+          to make deliberately.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="pagenav" aria-label="Project navigation">
+      <a class="backlink" style="margin:0" href="furnace-part.html">&larr; Furnace replacement component</a>
+      <a class="btn" href="paint-holder.html">Next: Paint robot nozzle holder &rarr;</a>
+    </nav>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span>&copy; <span id="year">2026</span> Bradley Schalk &middot; bradleyschalk.com</span>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="index.html">Projects</a>
+      <a href="../about.html">About</a>
+      <a href="../resume.html">Resume</a>
+      <a href="mailto:bradschalk06@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/bradley-schalk" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+  <div class="lightbox__bar">
+    <span class="lightbox__count"></span>
+    <button class="lb-btn lightbox__close" type="button" aria-label="Close image viewer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="lightbox__stage">
+    <button class="lb-btn lightbox__prev" type="button" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <img alt="">
+    <button class="lb-btn lightbox__next" type="button" aria-label="Next image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+  <p class="lightbox__caption"></p>
+</div>
+
+<script src="../js/script.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

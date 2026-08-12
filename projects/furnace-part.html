@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Furnace Replacement Component | Bradley Schalk</title>
+<meta name="description" content="Reverse engineering a broken heat-treatment furnace component: hand measurement of the damaged part, CAD reconstruction of its geometry, and manufacture of a machined replacement.">
+
+<link rel="canonical" href="https://bradleyschalk.com/projects/furnace-part.html">
+<meta property="og:site_name" content="bradleyschalk.com">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Furnace Replacement Component">
+<meta property="og:description" content="From a broken production part to a machined replacement, by measurement and CAD reconstruction.">
+<meta property="og:image" content="https://bradleyschalk.com/assets/images/og-image.jpg">
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="../index.html">
+      <span class="nav__mark" aria-hidden="true">BS</span>
+      Bradley Schalk
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <nav class="nav__links" id="nav-links" aria-label="Main">
+      <a class="nav__link" href="../index.html">Home</a>
+      <a class="nav__link" href="index.html" aria-current="page">Projects</a>
+      <a class="nav__link" href="../about.html">About</a>
+      <a class="nav__link" href="../resume.html">Resume</a>
+      <a class="nav__link" href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="phead">
+    <div class="wrap">
+      <a class="backlink" href="index.html">&larr; All projects</a>
+      <span class="eyebrow">Reverse engineering</span>
+      <h1>Furnace Replacement Component</h1>
+      <p class="lead">
+        A component in the heat-treatment furnace broke. Using the damaged part itself as
+        the only reference, I measured it, recreated its geometry in CAD, and supported
+        manufacture of a machined replacement.
+      </p>
+      <ul class="tags">
+        <li class="tag tag--accent">Reverse engineering</li>
+        <li class="tag">Hand measurement</li>
+        <li class="tag">CAD</li>
+        <li class="tag">Machining</li>
+      </ul>
+
+      <dl class="specs">
+        <div class="specs__row">
+          <dt class="specs__key">Component</dt>
+          <dd class="specs__val">Bearing component from the heat-treatment furnace</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Reference</dt>
+          <dd class="specs__val">The broken original part &mdash; no drawings available</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">My role</dt>
+          <dd class="specs__val">Measurement, CAD reconstruction, manufacturing support</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <figure class="phero phero--natural">
+        <img src="../assets/images/furnace-part/original-vs-replacement-cover-full.webp"
+             srcset="../assets/images/furnace-part/original-vs-replacement-cover-thumb.webp 820w,
+                     ../assets/images/furnace-part/original-vs-replacement-cover-full.webp 1800w"
+             sizes="(max-width: 1180px) 94vw, 1124px"
+             alt="The broken, heavily worn original furnace component on the left beside the freshly machined replacement on the right, with the fractured mounting flange pieces in front."
+             width="1800" height="1125" fetchpriority="high" decoding="async">
+        <figcaption>Original part used as the model reference (left) beside the final machined replacement (right).</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================== PROCESS ============================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Process</span>
+        <h2>Broken part to finished replacement</h2>
+        <p>The sequence here is the whole project &mdash; each step could only start once the one before it was right.</p>
+      </div>
+
+      <div class="rail">
+        <div class="rail__step">
+          <span class="rail__num">Step 01</span>
+          <h4>Problem</h4>
+          <p>A component in the heat-treatment furnace failed, taking the assembly out of service.</p>
+        </div>
+        <div class="rail__step">
+          <span class="rail__num">Step 02</span>
+          <h4>Measure</h4>
+          <p>The damaged part measured by hand, working around the worn and broken faces.</p>
+        </div>
+        <div class="rail__step">
+          <span class="rail__num">Step 03</span>
+          <h4>Design</h4>
+          <p>Geometry recreated in CAD and modeled to the dimensions the replacement needed to hold.</p>
+        </div>
+        <div class="rail__step">
+          <span class="rail__num">Step 04</span>
+          <h4>Manufacture</h4>
+          <p>A new component machined from the model.</p>
+        </div>
+        <div class="rail__step">
+          <span class="rail__num">Step 05</span>
+          <h4>Result</h4>
+          <p>A finished physical replacement for the broken original.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ THE DETAIL =========================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="hero__grid">
+        <div class="prose">
+          <span class="eyebrow">The engineering problem</span>
+          <h2>No drawing, one broken sample</h2>
+          <p>
+            Reverse engineering a failed part is harder than measuring a good one. The
+            reference is damaged in exactly the places that matter, so some geometry has to
+            be read from the surfaces that survived and inferred from how the part sits in
+            the assembly.
+          </p>
+          <p>
+            I worked from the physical component: measuring the damaged part, recreating
+            its geometry in CAD, and modeling the replacement to the dimensions it needed
+            to hold so a new part could be manufactured to take the place of the broken
+            one.
+          </p>
+
+          <h3>What I learned</h3>
+          <ul>
+            <li>
+              <strong>Decide what the part must control.</strong> Not every measured
+              surface is critical; identifying which ones actually locate and load the part
+              is most of the work.
+            </li>
+            <li>
+              <strong>A broken part is still evidence.</strong> Wear patterns and fracture
+              surfaces say something about how the component was loaded.
+            </li>
+            <li>
+              <strong>Model for the process that will cut it.</strong> Geometry that is
+              trivial to draw is not always trivial to machine.
+            </li>
+          </ul>
+        </div>
+
+        <div class="gallery" data-gallery>
+          <figure class="shot shot--cad">
+            <button class="shot__btn" type="button" data-lightbox data-cad
+                    data-full="../assets/images/furnace-part/replacement-cad-full.webp">
+              <img src="../assets/images/furnace-part/replacement-cad-thumb.webp"
+                   alt="CAD model of the replacement furnace component, showing a stepped cylindrical body with a flanged mounting base."
+                   loading="lazy" decoding="async">
+            </button>
+            <figcaption>CAD model of the replacement component, rebuilt from measurements of the broken original.</figcaption>
+          </figure>
+
+          <figure class="shot">
+            <button class="shot__btn" type="button" data-lightbox
+                    data-full="../assets/images/furnace-part/original-vs-replacement-full.webp">
+              <img src="../assets/images/furnace-part/original-vs-replacement-thumb.webp"
+                   alt="Side-by-side comparison of the worn original component and the machined replacement."
+                   loading="lazy" decoding="async">
+            </button>
+            <figcaption>Original (left) and machined replacement (right), with the broken mounting flange pieces in front.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="pagenav" aria-label="Project navigation">
+      <a class="backlink" style="margin:0" href="glider.html">&larr; Hand-launched glider</a>
+      <a class="btn" href="cleaning-machine.html">Next: Pipe-cleaning agitation machine &rarr;</a>
+    </nav>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span>&copy; <span id="year">2026</span> Bradley Schalk &middot; bradleyschalk.com</span>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="index.html">Projects</a>
+      <a href="../about.html">About</a>
+      <a href="../resume.html">Resume</a>
+      <a href="mailto:bradschalk06@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/bradley-schalk" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+  <div class="lightbox__bar">
+    <span class="lightbox__count"></span>
+    <button class="lb-btn lightbox__close" type="button" aria-label="Close image viewer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="lightbox__stage">
+    <button class="lb-btn lightbox__prev" type="button" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <img alt="">
+    <button class="lb-btn lightbox__next" type="button" aria-label="Next image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+  <p class="lightbox__caption"></p>
+</div>
+
+<script src="../js/script.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>FANUC Robot &amp; VMC Automated Manufacturing Cell | Bradley Schalk</title>
+<meta name="description" content="Programming and integration of an automated manufacturing cell pairing a FANUC R-1000iA/100F six-axis robot with a Yama Seiki BM-1600MAX vertical machining center, including TP programming, RoboGuide simulation, PLC safety logic, and custom end-of-arm tooling.">
+
+<link rel="canonical" href="https://bradleyschalk.com/projects/robot-cell.html">
+<meta property="og:site_name" content="bradleyschalk.com">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FANUC Robot & VMC Automated Manufacturing Cell">
+<meta property="og:description" content="Robot programming, PLC safety logic, and custom end-of-arm tooling for an automated track shoe machining cell.">
+<meta property="og:image" content="https://bradleyschalk.com/assets/images/og-image.jpg">
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="../index.html">
+      <span class="nav__mark" aria-hidden="true">BS</span>
+      Bradley Schalk
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <nav class="nav__links" id="nav-links" aria-label="Main">
+      <a class="nav__link" href="../index.html">Home</a>
+      <a class="nav__link" href="index.html" aria-current="page">Projects</a>
+      <a class="nav__link" href="../about.html">About</a>
+      <a class="nav__link" href="../resume.html">Resume</a>
+      <a class="nav__link" href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============================ PAGE HEADER =========================== -->
+  <div class="phead">
+    <div class="wrap">
+      <a class="backlink" href="index.html">&larr; All projects</a>
+      <span class="eyebrow">Industrial automation &middot; Controls</span>
+      <h1>FANUC Robot &amp; VMC Automated Manufacturing Cell</h1>
+      <p class="lead">
+        Programmed and helped set up an automated cell in which a FANUC R-1000iA/100F
+        six-axis robot moves track shoes between material pickup, a Yama Seiki
+        BM-1600MAX vertical machining center, and finished-part storage racks.
+      </p>
+      <ul class="tags">
+        <li class="tag tag--accent">FANUC TP programming</li>
+        <li class="tag">RoboGuide</li>
+        <li class="tag">PLC ladder logic</li>
+        <li class="tag">Sensors &amp; interlocks</li>
+        <li class="tag">CAD / CAM</li>
+        <li class="tag">3D printing</li>
+        <li class="tag">Machine vision</li>
+      </ul>
+
+      <dl class="specs">
+        <div class="specs__row">
+          <dt class="specs__key">Robot</dt>
+          <dd class="specs__val">FANUC R-1000iA/100F &mdash; 6-axis, 100 kg payload, approx. 2,230 mm reach</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Machine tool</dt>
+          <dd class="specs__val">Yama Seiki BM-1600MAX vertical machining center</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Software</dt>
+          <dd class="specs__val">FANUC RoboGuide, FANUC teach pendant (TP), CAD, CAM</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Parts handled</dt>
+          <dd class="specs__val">Track shoes &mdash; four sizes, each with its own routine</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">My role</dt>
+          <dd class="specs__val">Robot programming, position teaching, cycle development, PLC/sensor logic, end-of-arm tooling design</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Context</dt>
+          <dd class="specs__val">Engineering Intern, Metamora Industries &mdash; May to Aug 2026</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <!-- ============================== HERO IMAGE ========================== -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <figure class="phero">
+        <img src="../assets/images/robot-cell/cell-overview-full.webp"
+             srcset="../assets/images/robot-cell/cell-overview-thumb.webp 820w,
+                     ../assets/images/robot-cell/cell-overview-full.webp 1800w"
+             sizes="(max-width: 1180px) 94vw, 1124px"
+             alt="The automation cell: a yellow FANUC R-1000iA/100F robot mounted between steel material racks, facing the open door of a Yama Seiki vertical machining center."
+             width="1800" height="1350" fetchpriority="high" decoding="async">
+        <figcaption>The automation cell: FANUC R-1000iA/100F robot, Yama Seiki BM-1600MAX vertical machining center, and track shoe material racks.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================== OVERVIEW ============================ -->
+  <section class="section">
+    <div class="wrap prose">
+      <span class="eyebrow">Overview</span>
+      <h2>What the cell does</h2>
+      <p>
+        Track shoes are components used in tracked heavy equipment. In this cell, the
+        robot handles them through the full machining loop: picking a raw shoe from the
+        conveyor and material racks, loading it into the machining position inside the
+        VMC, retrieving it after the operation, and placing it into finished-part storage.
+      </p>
+      <p>
+        The cell runs four different track shoe sizes. Each size has its own set of taught
+        positions and its own robot routine, because the pick geometry, the load position
+        inside the machine, and the rack placement all change with the part.
+      </p>
+
+      <h3>The engineering problem</h3>
+      <p>
+        A robot and a machining center are two independent machines that do not natively
+        know anything about each other. Making them work as one cell means solving three
+        things at once: the robot has to reach every position accurately and repeatably,
+        the two machines have to exchange state so neither moves while the other is in the
+        way, and the whole thing has to stay safe with people working nearby.
+      </p>
+      <p>
+        Track shoes make that harder than a generic pick-and-place. They are heavy, they
+        come in four geometries, and the load position inside the machine has to be right
+        or the part will not clamp correctly for the operation.
+      </p>
+    </div>
+  </section>
+
+  <!-- ========================= ROBOT PROGRAMMING ======================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Robot programming</span>
+        <h2>Teaching the cell to move</h2>
+      </div>
+
+      <div class="prose" style="margin-bottom:38px">
+        <p>I mapped the robot motion for all four track shoe sizes and wrote separate routines for each. Building those routines meant teaching a large number of TP positions:</p>
+        <ul>
+          <li><strong>Pickup positions</strong> at the conveyor and material racks</li>
+          <li><strong>Approach positions</strong> that stage the tooling before it commits to a move</li>
+          <li><strong>Perch and safe positions</strong> the robot can always retreat to</li>
+          <li><strong>VMC load and unload positions</strong> inside the machine envelope</li>
+          <li><strong>Rack locations</strong> for finished parts</li>
+          <li><strong>Travel positions</strong> linking the above without clipping surrounding equipment</li>
+        </ul>
+        <p>
+          I used FANUC RoboGuide for simulation, programming, position setup, and cycle
+          development, then developed and tested the cycle on the real cell until the robot
+          and the VMC communicated correctly and the sequence ran through properly.
+        </p>
+      </div>
+
+      <div class="gallery gallery--wide" data-gallery>
+        <figure class="shot shot--cad">
+          <button class="shot__btn" type="button" data-lightbox data-cad
+                  data-full="../assets/images/robot-cell/roboguide-simulation-full.webp">
+            <img src="../assets/images/robot-cell/roboguide-simulation-thumb.webp"
+                 alt="FANUC RoboGuide simulation showing the robot model, conveyor, and part fixtures laid out in the virtual cell."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>FANUC RoboGuide simulation of the cell, used for programming, position setup, and cycle development.</figcaption>
+        </figure>
+
+        <figure class="shot shot--cad">
+          <button class="shot__btn" type="button" data-lightbox data-cad
+                  data-full="../assets/images/robot-cell/vmc-cad-model-full.webp">
+            <img src="../assets/images/robot-cell/vmc-cad-model-thumb.webp"
+                 alt="CAD model of the Yama Seiki BM-1600MAX vertical machining center including enclosure and table."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>CAD model of the Yama Seiki BM-1600MAX built for the cell, used to work out layout and reach.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================== VIDEO ============================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Cell in motion</span>
+        <h2>Cycle and commissioning</h2>
+        <p>Recorded during development of the cell. Audio has been removed.</p>
+      </div>
+
+      <!-- Featured: automated cycle -->
+      <div class="videos videos--pair" style="margin-bottom:44px">
+        <figure class="vfig vfig--portrait">
+          <video controls preload="none" playsinline
+                 poster="../assets/videos/cycle-1-poster.webp"
+                 width="608" height="1072">
+            <source src="../assets/videos/cycle-1.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+            <a href="../assets/videos/cycle-1.mp4">Download the clip</a>.
+          </video>
+          <figcaption>
+            <b>Automated cycle</b>
+            Automated cell cycle demonstration. The FANUC R-1000iA/100F loads the track
+            shoe into the VMC machining position before retrieving it and returning it to
+            the storage rack. The VMC machining operation was disabled during this
+            recorded demonstration.
+          </figcaption>
+        </figure>
+
+        <div class="prose">
+          <h3>Reading the cycle</h3>
+          <p>
+            The robot approaches the rack, takes the shoe on the magnet, indexes to a
+            travel position clear of the surrounding steel, and enters the machine
+            envelope to set the part in its machining position.
+          </p>
+          <p>
+            It then withdraws, waits, re-enters to retrieve the shoe, and returns it to
+            storage. The machining operation itself is switched off here &mdash; the point
+            of the recording is the motion, handoff, and clearance, not metal removal.
+          </p>
+        </div>
+      </div>
+
+      <!-- Commissioning timelapses -->
+      <div class="videos videos--pair">
+        <figure class="vfig">
+          <video controls preload="none" playsinline
+                 poster="../assets/videos/mapping-points-poster.webp"
+                 width="1280" height="714">
+            <source src="../assets/videos/mapping-points.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+            <a href="../assets/videos/mapping-points.mp4">Download the clip</a>.
+          </video>
+          <figcaption>
+            <b>Mapping robot positions</b>
+            Teaching and mapping FANUC robot position points used to construct the
+            automated motion sequence.
+          </figcaption>
+        </figure>
+
+        <figure class="vfig">
+          <video controls preload="none" playsinline
+                 poster="../assets/videos/testing-placements-poster.webp"
+                 width="1280" height="720">
+            <source src="../assets/videos/testing-placements.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+            <a href="../assets/videos/testing-placements.mp4">Download the clip</a>.
+          </video>
+          <figcaption>
+            <b>Testing robot placement</b>
+            Validation testing of taught FANUC robot positions using production track shoes
+            to verify accurate placement and repeatability.
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= CONTROLS & SAFETY ======================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Controls &amp; safety</span>
+        <h2>PLC logic and interlocks</h2>
+      </div>
+
+      <div class="prose" style="margin-bottom:38px">
+        <p>
+          My work included PLC ladder logic used to coordinate communication and
+          information exchange between the robot, the VMC, and other equipment in the cell.
+          The logic decides when each machine is allowed to move, and it depends on knowing
+          the true state of the cell at every moment.
+        </p>
+
+        <h3>Devices integrated</h3>
+        <ul>
+          <li>Light curtains and area sensors covering personnel access</li>
+          <li>Part-presence sensors</li>
+          <li>Machine-door sensors</li>
+          <li>Safety sensors, interlocks, and machine-state signals</li>
+        </ul>
+
+        <h3>What the logic monitors</h3>
+        <ul>
+          <li>Whether a part is present, and where</li>
+          <li>Door positions on the machining center</li>
+          <li>Personnel access into guarded areas</li>
+          <li>Machine readiness and robot readiness before any handoff</li>
+          <li>Whether overall conditions are safe to operate</li>
+        </ul>
+
+        <p>
+          The purpose of the sensor and PLC logic is to prevent unsafe operation and reduce
+          the risk of collisions or accidents &mdash; the robot should not enter the machine
+          while a door is moving, and nothing should cycle while someone has broken the
+          light curtain.
+        </p>
+        <p>
+          Implementing these functions also meant physically tracing and working through
+          the wiring inside the robot and VMC electrical control cabinets, following signals
+          from the device back to the terminal to understand what the logic was actually
+          reading.
+        </p>
+      </div>
+
+      <div class="gallery gallery--wide" data-gallery>
+        <figure class="shot">
+          <button class="shot__btn" type="button" data-lightbox
+                  data-full="../assets/images/robot-cell/control-cabinet-robot-full.webp">
+            <img src="../assets/images/robot-cell/control-cabinet-robot-thumb.webp"
+                 alt="Open control cabinet showing a controller, terminal blocks, and bundled field wiring routed out of the enclosure."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>Robot cell control cabinet. Wiring was traced through this panel while implementing control functions.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <button class="shot__btn" type="button" data-lightbox
+                  data-full="../assets/images/robot-cell/control-cabinet-vmc-full.webp">
+            <img src="../assets/images/robot-cell/control-cabinet-vmc-thumb.webp"
+                 alt="Machine tool control cabinet with drives, relays, terminal rails, and colour-coded wiring looms."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>VMC and automation control cabinet worked through during cell integration.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= END-OF-ARM TOOLING ======================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">End-of-arm tooling</span>
+        <h2>Magnet, sensor, and piston</h2>
+      </div>
+
+      <div class="prose" style="margin-bottom:38px">
+        <p>
+          The robot picks track shoes with a magnet-based end effector. I worked on a
+          system combining a magnet, a sensor, and a pneumatic piston, and designed a custom
+          plate that mounts on top of the magnet and carries the piston and sensor alongside
+          it. I created the CAD and the CAM needed to manufacture that plate.
+        </p>
+        <p>
+          I also modified the magnet holder. The original occupied too much space, so I
+          shortened and redesigned it to reduce the tooling envelope, improve clearance, and
+          lower the chance of collisions with surrounding equipment. On a cell this tight,
+          every millimetre the tooling gives back is margin the robot can use.
+        </p>
+      </div>
+
+      <div class="gallery gallery--wide" data-gallery>
+        <figure class="shot shot--cad">
+          <button class="shot__btn" type="button" data-lightbox data-cad
+                  data-full="../assets/images/robot-cell/magnet-plate-cam-full.webp">
+            <img src="../assets/images/robot-cell/magnet-plate-cam-thumb.webp"
+                 alt="CAM setup showing toolpaths over a rectangular mounting plate with bores and mounting holes."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>CAM setup for the custom plate that carries the pneumatic piston and sensor alongside the robot magnet.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <button class="shot__btn" type="button" data-lightbox
+                  data-full="../assets/images/robot-cell/eoat-original-full.webp">
+            <img src="../assets/images/robot-cell/eoat-original-thumb.webp"
+                 alt="Original magnet block resting on a steel track shoe with dowel pins laid out beside it."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>Original magnet end-of-arm tooling, before the piston and sensor were added.</figcaption>
+        </figure>
+
+        <figure class="shot shot--cad">
+          <button class="shot__btn" type="button" data-lightbox data-cad
+                  data-full="../assets/images/robot-cell/magnet-holder-cam-full.webp">
+            <img src="../assets/images/robot-cell/magnet-holder-cam-thumb.webp"
+                 alt="CAM setup for the shortened magnet holder, showing the reduced-height body and its machining toolpaths."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>CAM setup for the shortened magnet holder, redesigned to reduce the tooling envelope and collision risk.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <button class="shot__btn" type="button" data-lightbox
+                  data-full="../assets/images/robot-cell/eoat-modified-full.webp">
+            <img src="../assets/images/robot-cell/eoat-modified-thumb.webp"
+                 alt="Modified end-of-arm tooling mounted on the robot, with the plate supported on two posts above the magnet body."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>Modified end-of-arm tooling installed on the robot, with the piston and sensor mounted alongside the magnet.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================= CAMERA / CLAMP CHECK ======================= -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Machine vision support</span>
+        <h2>Camera mount for the clamping check</h2>
+      </div>
+
+      <div class="hero__grid">
+        <div class="prose">
+          <p>
+            A track shoe that is not seated and clamped correctly should never be machined.
+            To catch that, a camera was positioned above the Yama Seiki VMC to record shoes
+            during the loading and clamping process.
+          </p>
+          <p>
+            I designed and 3D printed the mount that holds that camera and supported getting
+            it positioned correctly over the machine. The footage fed an AI computer-vision
+            system that our team trained to determine whether the track shoe was properly
+            clamped.
+          </p>
+          <div class="note">
+            <p>
+              <strong>Scope note:</strong> the vision model itself was trained by the team.
+              My documented contribution here is the CAD design of the mount, manufacturing
+              it on a 3D printer, and supporting camera positioning and integration.
+            </p>
+          </div>
+        </div>
+
+        <div class="gallery" data-gallery>
+          <figure class="shot shot--cad shot--tall">
+            <button class="shot__btn" type="button" data-lightbox data-cad
+                    data-full="../assets/images/robot-cell/camera-mount-cad-full.webp">
+              <img src="../assets/images/robot-cell/camera-mount-cad-thumb.webp"
+                   alt="CAD model of the camera mount: a cylindrical body on a flanged base with an angled face plate on top."
+                   loading="lazy" decoding="async">
+            </button>
+            <figcaption>CAD model of the 3D-printed mount that positions the clamping-detection camera above the VMC.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================= TECHNICAL DETAILS ======================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Reference</span>
+        <h2>Equipment</h2>
+      </div>
+
+      <dl class="specs">
+        <div class="specs__row">
+          <dt class="specs__key">Robot</dt>
+          <dd class="specs__val">FANUC R-1000iA/100F &mdash; six-axis industrial robot, 100 kg maximum payload, approximately 2,230 mm reach. FANUC lists the model for high-speed industrial applications including material handling.</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Machining center</dt>
+          <dd class="specs__val">Yama Seiki BM-1600MAX &mdash; 1,600 mm X travel, 800 mm Y travel, 800 mm Z travel, 1,700 &times; 800 mm table, maximum table load approximately 2,000 kg (4,400 lb).</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Programming</dt>
+          <dd class="specs__val">FANUC teach pendant (TP) programs, one routine per track shoe size; PLC ladder logic for cell coordination and interlocks.</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Simulation</dt>
+          <dd class="specs__val">FANUC RoboGuide &mdash; layout, reach study, position setup, and cycle development.</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============================== OUTCOME ============================= -->
+  <section class="section">
+    <div class="wrap prose">
+      <span class="eyebrow">Outcome</span>
+      <h2>Where it landed, and what I took from it</h2>
+      <p>
+        By the end of the work the robot and the VMC were communicating correctly and the
+        automated sequence executed properly across the taught positions, with placement
+        verified by repeated testing on production track shoes.
+      </p>
+
+      <h3>What I learned</h3>
+      <ul>
+        <li>
+          <strong>Simulation gets you close; the floor decides.</strong> RoboGuide was
+          essential for laying out the cycle, but taught positions still had to be walked
+          in and validated against real parts and real fixturing.
+        </li>
+        <li>
+          <strong>Tooling envelope is a design constraint, not an afterthought.</strong>
+          Shortening the magnet holder did more for reliable motion than any change I made
+          to the paths themselves.
+        </li>
+        <li>
+          <strong>Safety logic is where the cell actually becomes a system.</strong>
+          Interlocks force you to write down every assumption about what the other machine
+          is doing, which is exactly where integration bugs hide.
+        </li>
+        <li>
+          <strong>Reading a wiring cabinet is a skill.</strong> Tracing a signal from a
+          sensor back to a terminal made the ladder logic far less abstract.
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="pagenav" aria-label="Project navigation">
+      <a class="backlink" style="margin:0" href="index.html">&larr; All projects</a>
+      <a class="btn" href="b36-peacemaker.html">Next: B-36 Peacemaker &rarr;</a>
+    </nav>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span>&copy; <span id="year">2026</span> Bradley Schalk &middot; bradleyschalk.com</span>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="index.html">Projects</a>
+      <a href="../about.html">About</a>
+      <a href="../resume.html">Resume</a>
+      <a href="mailto:bradschalk06@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/bradley-schalk" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<!-- ============================== LIGHTBOX ============================== -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+  <div class="lightbox__bar">
+    <span class="lightbox__count"></span>
+    <button class="lb-btn lightbox__close" type="button" aria-label="Close image viewer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="lightbox__stage">
+    <button class="lb-btn lightbox__prev" type="button" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <img alt="">
+    <button class="lb-btn lightbox__next" type="button" aria-label="Next image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+  <p class="lightbox__caption"></p>
+</div>
+
+<script src="../js/script.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
