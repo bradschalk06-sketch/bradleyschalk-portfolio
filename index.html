@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Bradley Schalk | Aerospace Engineering Portfolio</title>
+<meta name="description" content="Aerospace Engineering portfolio of Bradley Schalk featuring aircraft CAD, flight testing, robotics, manufacturing, CAD/CAM, mechanical design, automation, and hands-on engineering projects.">
+<meta name="author" content="Bradley Schalk">
+
+<!-- Canonical + Open Graph URLs. Run ./set-domain.sh <your-domain> to fill these in. -->
+<link rel="canonical" href="https://bradleyschalk.com/">
+
+<meta property="og:site_name" content="bradleyschalk.com">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bradley Schalk | Aerospace Engineering Portfolio">
+<meta property="og:description" content="Aerospace Engineering student turning designs into real hardware — aircraft CAD, flight testing, robotics, automation, CAD/CAM, and machining.">
+<meta property="og:image" content="https://bradleyschalk.com/assets/images/og-image.jpg">
+<meta property="og:url" content="https://bradleyschalk.com/">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Bradley Schalk",
+  "description": "Aerospace Engineering student at the University of Illinois Urbana-Champaign working across design, manufacturing, testing, and hands-on hardware.",
+  "email": "bradschalk06@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Urbana-Champaign",
+    "addressRegion": "IL",
+    "addressCountry": "US"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Illinois Urbana-Champaign"
+  },
+  "sameAs": ["https://www.linkedin.com/in/bradley-schalk"]
+}
+</script>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ============================= NAVIGATION ============================= -->
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="index.html">
+      <span class="nav__mark" aria-hidden="true">BS</span>
+      Bradley Schalk
+    </a>
+
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+
+    <nav class="nav__links" id="nav-links" aria-label="Main">
+      <a class="nav__link" href="index.html" aria-current="page">Home</a>
+      <a class="nav__link" href="projects/index.html">Projects</a>
+      <a class="nav__link" href="about.html">About</a>
+      <a class="nav__link" href="resume.html">Resume</a>
+      <a class="nav__link" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================================ HERO ============================== -->
+  <section class="hero">
+    <div class="wrap hero__grid">
+      <div>
+        <h1>Bradley Schalk</h1>
+        <p class="hero__role">Aerospace &middot; Design &middot; Manufacturing &middot; Testing</p>
+        <p class="hero__lead">
+          Aerospace Engineering student at the University of Illinois Urbana-Champaign,
+          building, testing, and improving real hardware across CAD, manufacturing,
+          robotics, and flight. I like engineering that crosses disciplines and does not
+          stop at the model.
+        </p>
+        <div class="btn-row">
+          <a class="btn btn--primary" href="projects/index.html">View projects</a>
+          <a class="btn" href="resume.html">View resume</a>
+        </div>
+      </div>
+
+      <figure class="hero__figure">
+        <img src="assets/images/about/portrait.webp"
+             alt="Portrait of Bradley Schalk."
+             width="800" height="1000" fetchpriority="high" decoding="async">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ========================= FEATURED PROJECTS ======================== -->
+  <section class="section" id="projects">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Featured work</span>
+        <h2>Projects</h2>
+        <p>
+          Aerospace design and CAD alongside production hardware, automation, and
+          machining &mdash; carried from problem through design into something built and
+          tested.
+        </p>
+      </div>
+
+      <div class="pgrid">
+
+        <!-- ---------------------- FLAGSHIP PROJECT ---------------------- -->
+        <article class="pcard pcard--flagship">
+          <div class="pcard__media">
+            <img src="assets/images/robot-cell/cell-overview-thumb.webp"
+                 alt="FANUC R-1000iA/100F robot and Yama Seiki BM-1600MAX vertical machining center in the automated track shoe cell."
+                 loading="lazy" decoding="async" width="820" height="615">
+          </div>
+          <div class="pcard__body">
+            <span class="eyebrow">Automation &middot; Controls</span>
+            <h3 class="pcard__title">
+              <a href="projects/robot-cell.html">FANUC Robot &amp; VMC Automated Manufacturing Cell</a>
+            </h3>
+            <p class="pcard__desc">
+              Programmed and helped set up an automated cell in which a FANUC
+              R-1000iA/100F six-axis robot moves track shoes between material racks and a
+              Yama Seiki BM-1600MAX machining center &mdash; robot programming, PLC safety
+              logic, custom end-of-arm tooling, and commissioning on a live cell.
+            </p>
+            <div class="pcard__foot">
+              <ul class="tags">
+                <li class="tag tag--accent">FANUC TP</li>
+                <li class="tag">RoboGuide</li>
+                <li class="tag">PLC ladder logic</li>
+                <li class="tag">Sensors &amp; I/O</li>
+                <li class="tag">CAD / CAM</li>
+                <li class="tag">Machine vision</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <div class="pcol">
+          <article class="pcard">
+            <div class="pcard__media pcard__media--fit pcard__media--cine">
+              <img src="assets/images/b36-peacemaker/nx-render-front-quarter-thumb.webp"
+                   alt="Front-quarter Siemens NX render of the B-36 Peacemaker model above a cloud layer."
+                   loading="lazy" decoding="async" width="820" height="434">
+            </div>
+            <div class="pcard__body">
+              <span class="eyebrow">Aerospace &middot; CAD</span>
+              <h3 class="pcard__title">
+                <a href="projects/b36-peacemaker.html">B-36 Peacemaker &mdash; Siemens NX Aircraft Model</a>
+              </h3>
+              <p class="pcard__desc">
+                A high-fidelity parametric recreation of the Convair B-36 built in Siemens
+                NX, with constrained assemblies, moving mechanisms, rendered views, and an
+                engineering animation.
+              </p>
+              <div class="pcard__foot">
+                <ul class="tags">
+                  <li class="tag tag--accent">Siemens NX</li>
+                  <li class="tag">Large assemblies</li>
+                  <li class="tag">Mechanisms</li>
+                  <li class="tag">Animation</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="pcard">
+            <div class="pcard__media pcard__media--fit pcard__media--wide">
+              <img src="assets/images/glider/cover-card.webp"
+                   alt="The fabricated hand-launched glider prototype seen head-on, showing the full triangular planform and the centre vertical fin."
+                   loading="lazy" decoding="async" width="1100" height="1081">
+            </div>
+            <div class="pcard__body">
+              <span class="eyebrow">Aerospace &middot; Design-build-test</span>
+              <h3 class="pcard__title">
+                <a href="projects/glider.html">Hand-Launched Glider &mdash; Design, Fabrication &amp; Flight Testing</a>
+              </h3>
+              <p class="pcard__desc">
+                Led a team through designing a glider from scratch, fabricating the
+                prototype, and refining its stability through iterative testing &mdash;
+                reaching a measured 179 ft flight over 6.35 seconds from a ground-level
+                launch.
+              </p>
+              <div class="pcard__foot">
+                <ul class="tags">
+                  <li class="tag tag--accent">Team lead</li>
+                  <li class="tag">CAD</li>
+                  <li class="tag">Fabrication</li>
+                  <li class="tag">Flight testing</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="pcol">
+          <article class="pcard">
+            <div class="pcard__media">
+              <img src="assets/images/conveyor/hero-physical-thumb.webp"
+                   alt="Physical furnace conveyor roller and chain system used as the basis for the CAD/CAM replacement work."
+                   loading="lazy" decoding="async" width="820" height="615">
+            </div>
+            <div class="pcard__body">
+              <span class="eyebrow">Manufacturing &middot; CAD / CAM</span>
+              <h3 class="pcard__title">
+                <a href="projects/conveyor.html">Furnace Conveyor Belt System</a>
+              </h3>
+              <p class="pcard__desc">
+                Modeled a furnace conveyor and its components from existing hardware,
+                produced the CAM to machine them, built custom workholding, and assembled
+                physical conveyor segments.
+              </p>
+              <div class="pcard__foot">
+                <ul class="tags">
+                  <li class="tag">CAD assemblies</li>
+                  <li class="tag">CAM</li>
+                  <li class="tag">CNC machining</li>
+                  <li class="tag">Workholding</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <article class="pcard">
+            <div class="pcard__media">
+              <img src="assets/images/furnace-part/original-vs-replacement-cover-thumb.webp"
+                   alt="Broken furnace component beside its newly machined replacement, with the fractured flange pieces in front."
+                   loading="lazy" decoding="async" width="820" height="513">
+            </div>
+            <div class="pcard__body">
+              <span class="eyebrow">Manufacturing &middot; Reverse engineering</span>
+              <h3 class="pcard__title">
+                <a href="projects/furnace-part.html">Furnace Replacement Component</a>
+              </h3>
+              <p class="pcard__desc">
+                A component in the heat-treatment furnace broke with no drawings available. I
+                measured the damaged part, rebuilt its geometry in CAD, and supported
+                manufacture of a replacement.
+              </p>
+              <div class="pcard__foot">
+                <ul class="tags">
+                  <li class="tag">Hand measurement</li>
+                  <li class="tag">CAD</li>
+                  <li class="tag">Machining</li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+
+
+      </div>
+
+      <div class="btn-row" style="margin-top:34px">
+        <a class="btn" href="projects/index.html">See all seven projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== SKILLS ============================== -->
+  <section class="section" id="skills">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Capabilities</span>
+        <h2>Technical skills</h2>
+      </div>
+
+      <!-- TIP: add any other software you want listed as you pick it up. -->
+      <div class="skills">
+        <div class="skills__group">
+          <h3>Design &amp; CAD</h3>
+          <ul>
+            <li>Siemens NX</li>
+            <li>Fusion 360</li>
+            <li>Part modeling and large assemblies</li>
+            <li>Constrained mechanisms and motion</li>
+            <li>Aircraft and aerospace geometry</li>
+            <li>Reverse engineering from measurements</li>
+            <li>Rendering and engineering animation</li>
+          </ul>
+        </div>
+
+        <div class="skills__group">
+          <h3>Build &amp; test</h3>
+          <ul>
+            <li>Prototype fabrication</li>
+            <li>Flight testing and design iteration</li>
+            <li>Mechanical assembly and fit-up</li>
+            <li>Hand measurement and layout</li>
+            <li>Hands-on troubleshooting</li>
+            <li>3D printing</li>
+          </ul>
+        </div>
+
+        <div class="skills__group">
+          <h3>Manufacturing</h3>
+          <ul>
+            <li>Fusion CAM</li>
+            <li>CNC machining and milling</li>
+            <li>Vertical machining centers</li>
+            <li>Custom workholding and soft jaws</li>
+            <li>Design for manufacturability</li>
+          </ul>
+        </div>
+
+        <div class="skills__group">
+          <h3>Robotics &amp; controls</h3>
+          <ul>
+            <li>FANUC teach pendant (TP) programming</li>
+            <li>FANUC RoboGuide simulation</li>
+            <li>PLC ladder logic</li>
+            <li>Sensor I/O, interlocks, and safety devices</li>
+            <li>Robot&ndash;machine tool integration</li>
+            <li>Machine vision integration support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================== ABOUT ============================== -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">About</span>
+        <h2>Close to the hardware, across disciplines</h2>
+      </div>
+
+      <div class="hero__grid">
+        <div class="prose">
+          <p>
+            I'm an Aerospace Engineering student at the University of Illinois
+            Urbana-Champaign who enjoys working close to the hardware and carrying ideas
+            from design into the real world. My experience has ranged from aircraft CAD and
+            flight testing to robotics, automation, machining, CAD/CAM, controls,
+            manufacturing, and hands-on troubleshooting.
+          </p>
+          <p>
+            I'm especially interested in aerospace and space systems, but what I like most
+            is engineering work that crosses disciplines and lets me understand, build,
+            test, and improve a full system rather than staying confined to one narrow
+            task.
+          </p>
+          <p>
+            Alongside coursework I've been involved with Liquid Rocketry at Illinois,
+            including the Engine subgroup, and with ISS SpaceShot.
+          </p>
+          <p><a href="about.html">More about my background &rarr;</a></p>
+        </div>
+
+        <dl class="specs">
+          <div class="specs__row">
+            <dt class="specs__key">Degree</dt>
+            <dd class="specs__val">B.S. Aerospace Engineering</dd>
+          </div>
+          <div class="specs__row">
+            <dt class="specs__key">University</dt>
+            <dd class="specs__val">University of Illinois Urbana-Champaign</dd>
+          </div>
+          <div class="specs__row">
+            <dt class="specs__key">Graduating</dt>
+            <dd class="specs__val">May 2029</dd>
+          </div>
+          <div class="specs__row">
+            <dt class="specs__key">Location</dt>
+            <dd class="specs__val">Urbana-Champaign, Illinois</dd>
+          </div>
+          <div class="specs__row">
+            <dt class="specs__key">Involved with</dt>
+            <dd class="specs__val">Liquid Rocketry at Illinois (Engine subgroup) &middot; ISS SpaceShot</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= CONTACT ============================== -->
+  <section class="section" id="contact">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Contact</span>
+        <h2>Get in touch</h2>
+        <p>Open to engineering internships and hardware-heavy project work. Email is the fastest way to reach me.</p>
+      </div>
+
+      <div class="contact-grid">
+        <a class="contact-card" href="mailto:bradschalk06@gmail.com">
+          <span class="eyebrow">Email</span>
+          <span class="value">bradschalk06@gmail.com</span>
+        </a>
+        <a class="contact-card" href="tel:+13096439035">
+          <span class="eyebrow">Phone</span>
+          <span class="value">(309) 643-9035</span>
+        </a>
+        <a class="contact-card" href="https://www.linkedin.com/in/bradley-schalk" target="_blank" rel="noopener">
+          <span class="eyebrow">LinkedIn</span>
+          <span class="value">linkedin.com/in/bradley-schalk</span>
+        </a>
+        <a class="contact-card" href="resume.html">
+          <span class="eyebrow">Resume</span>
+          <span class="value">View and download PDF</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ================================ FOOTER =============================== -->
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span>&copy; <span id="year">2026</span> Bradley Schalk &middot; bradleyschalk.com</span>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="projects/index.html">Projects</a>
+      <a href="about.html">About</a>
+      <a href="resume.html">Resume</a>
+      <a href="mailto:bradschalk06@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/bradley-schalk" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

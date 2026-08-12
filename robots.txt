@@ -1,0 +1,6 @@
+# Allow everything
+User-agent: *
+Allow: /
+
+# Add your live domain here after deploying:
+# Sitemap: YOUR_SITE_URL/sitemap.xml
