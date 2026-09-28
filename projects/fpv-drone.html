@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Custom FPV Drone &mdash; Airframe &amp; Electronics Integration | Bradley Schalk</title>
+<meta name="description" content="An in-progress custom FPV quadcopter build: carbon-fiber airframe assembly, brushless motor installation, flight-control and power integration, soldering, and wire routing in a compact airframe.">
+
+<link rel="canonical" href="https://bradleyschalk.com/projects/fpv-drone.html">
+<meta property="og:site_name" content="bradleyschalk.com">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Custom FPV Drone — Airframe & Electronics Integration">
+<meta property="og:description" content="An in-progress FPV quadcopter build, taken from separate components to an integrated airframe with motors, flight-control electronics, and power wiring soldered and routed.">
+<meta property="og:image" content="https://bradleyschalk.com/assets/images/fpv-drone/integrated-airframe-full.webp">
+
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="nav">
+  <div class="wrap nav__inner">
+    <a class="nav__brand" href="../index.html">
+      <span class="nav__mark" aria-hidden="true">BS</span>
+      Bradley Schalk
+    </a>
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <nav class="nav__links" id="nav-links" aria-label="Main">
+      <a class="nav__link" href="../index.html">Home</a>
+      <a class="nav__link" href="index.html" aria-current="page">Projects</a>
+      <a class="nav__link" href="../about.html">About</a>
+      <a class="nav__link" href="../resume.html">Resume</a>
+      <a class="nav__link" href="../contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="phead">
+    <div class="wrap">
+      <a class="backlink" href="index.html">&larr; All projects</a>
+      <span class="eyebrow">Electromechanical &middot; Fabrication</span>
+      <h1>Custom FPV Drone &mdash; Airframe &amp; Electronics Integration</h1>
+      <p class="lead">
+        An in-progress custom FPV quadcopter, built up from a bare carbon-fiber frame. The
+        work so far has been turning a bench full of separate mechanical and electrical
+        parts into one integrated airframe &mdash; motors mounted, flight-control
+        electronics installed, and every motor and power connection soldered and routed by
+        hand.
+      </p>
+      <ul class="tags">
+        <li class="tag tag--accent">In progress</li>
+        <li class="tag">Soldering</li>
+        <li class="tag">Power distribution</li>
+        <li class="tag">Wire routing</li>
+        <li class="tag">System integration</li>
+        <li class="tag">Fabrication</li>
+      </ul>
+
+      <dl class="specs">
+        <div class="specs__row">
+          <dt class="specs__key">My role</dt>
+          <dd class="specs__val">Builder &mdash; component layout, mechanical assembly, soldering, wiring, and integration</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Status</dt>
+          <dd class="specs__val">In progress &mdash; integrated airframe and electronics; not yet configured or flown</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Process</dt>
+          <dd class="specs__val">Components &rarr; airframe &amp; motors &rarr; electronics &amp; power &rarr; soldering &amp; routing &rarr; configuration &amp; testing (next)</dd>
+        </div>
+        <div class="specs__row">
+          <dt class="specs__key">Configuration</dt>
+          <dd class="specs__val">Quadcopter &mdash; carbon-fiber frame, four brushless motors, central flight-control board</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+
+  <section class="section section--tight">
+    <div class="wrap">
+      <figure class="phero phero--natural">
+        <img src="../assets/images/fpv-drone/integrated-airframe-full.webp"
+             srcset="../assets/images/fpv-drone/integrated-airframe-thumb.webp 820w,
+                     ../assets/images/fpv-drone/integrated-airframe-full.webp 1800w"
+             sizes="(max-width: 1180px) 94vw, 1124px"
+             alt="The drone at its current stage, seen from above: an X-shaped carbon-fiber frame with a brushless motor at each arm tip, the flight-control board mounted at the center, motor leads cable-tied along each arm, and a red and black battery lead with its connector exiting one end of the frame."
+             width="1800" height="1350" fetchpriority="high" decoding="async">
+        <figcaption>Current state: frame, four motors, central flight-control board, routed motor leads, and the battery lead soldered in.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============================== STATUS ============================= -->
+  <section class="section section--tight">
+    <div class="wrap">
+      <div class="note">
+        <p>
+          <strong>Status note:</strong> this is an active build. This page documents it
+          through the hardware-integration stage &mdash; the airframe, motors, electronics,
+          and power wiring are assembled and soldered. The flight controller has not been
+          configured and the aircraft has not flown. The page will be updated as the build
+          moves through configuration and testing.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PROCESS ============================ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">Process</span>
+        <h2>From separate parts to one system</h2>
+        <p>Four stages complete so far. The fifth is next.</p>
+      </div>
+
+      <div class="rail">
+        <div class="rail__step">
+          <span class="rail__num">Step 01</span>
+          <h4>Components</h4>
+          <p>Every part laid out and accounted for before anything was fixed to the frame.</p>
+        </div>
+        <div class="rail__step">
+          <span class="rail__num">Step 02</span>
+          <h4>Airframe &amp; motors</h4>
+          <p>Carbon-fiber frame assembled and four brushless motors mounted at the arm tips.</p>
+        </div>
+        <div class="rail__step">
+          <span class="rail__num">Step 03</span>
+          <h4>Electronics &amp; power</h4>
+          <p>Flight-control board mounted centrally, with the battery lead and capacitor soldered in.</p>
+        </div>
+        <div class="rail__step">
+          <span class="rail__num">Step 04</span>
+          <h4>Solder &amp; route</h4>
+          <p>Motor leads trimmed, soldered to the board, and secured along the arms.</p>
+        </div>
+        <div class="rail__step">
+          <span class="rail__num">Next</span>
+          <h4>Configure &amp; test</h4>
+          <p>Configuration, system checks, and first controlled testing. Not yet started.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== OVERVIEW =========================== -->
+  <section class="section">
+    <div class="wrap prose">
+      <span class="eyebrow">Overview</span>
+      <h2>A compact electromechanical system</h2>
+      <p>
+        A small quadcopter is a dense electromechanical system. Four motors, the
+        electronics that drive them, the flight controller, and the battery all share one
+        compact frame, and every one of them is joined to the others by wire. The
+        mechanical layout decides where the wires can go, and the wiring decides whether
+        the layout actually works.
+      </p>
+      <p>
+        I'm building this one up from the bare frame. The end goal is a working FPV
+        aircraft, but the engineering so far has been integration: getting mechanical
+        hardware, power electronics, and wiring to fit together cleanly and reliably, in a
+        way that can still be worked on later.
+      </p>
+      <p>
+        The project is still in progress. What follows covers the build up to its current
+        stage, where the airframe, motors, electronics, and power wiring are assembled and
+        soldered into a single unit.
+      </p>
+    </div>
+  </section>
+
+  <!-- ======================= 01 — COMPONENT PLANNING ===================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">01 &mdash; Component planning</span>
+        <h2>Seeing the whole system before building any of it</h2>
+      </div>
+
+      <div class="hero__grid">
+        <div class="prose">
+          <p>
+            Before anything was fixed to the frame, I laid every component out on the
+            bench: the carbon-fiber frame plates, the four motors, the flight-control
+            electronics, the camera, the antenna, the battery, the power lead, and the
+            bagged hardware for each subassembly.
+          </p>
+          <p>
+            Seeing it all at once made it easier to work out what had to connect to what,
+            and to think through the order of assembly &mdash; which parts go on the frame
+            first, what becomes hard to reach once the next layer is installed, and where
+            the wiring from each component will have to travel.
+          </p>
+          <p>
+            At this point it is a collection of separate mechanical and electrical parts.
+            The rest of the build is the work of turning that collection into one system.
+          </p>
+        </div>
+
+        <div class="gallery" data-gallery>
+          <figure class="shot shot--tall">
+            <button class="shot__btn" type="button" data-lightbox
+                    data-full="../assets/images/fpv-drone/components-layout-full.webp">
+              <img src="../assets/images/fpv-drone/components-layout-thumb.webp"
+                   alt="Overhead view of the drone components laid out on a workbench before assembly: the carbon-fiber frame plates, four bagged motors, the flight-control electronics in anti-static bags, the FPV camera and its mount, an antenna, a LiPo battery, a red and black power lead, and separate bags of fasteners."
+                   loading="lazy" decoding="async">
+            </button>
+            <figcaption>The full set of components laid out before assembly: frame plates, motors, electronics, camera, battery, power lead, and fastener kits.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 02 — AIRFRAME & PROPULSION ==================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">02 &mdash; Airframe &amp; propulsion</span>
+        <h2>Frame and motors</h2>
+        <p>
+          The carbon-fiber frame came first, then the four brushless motors at the ends of
+          the arms.
+        </p>
+      </div>
+
+      <div class="prose" style="margin-bottom:38px">
+        <p>
+          With the frame plate assembled, I mounted the four brushless motors at the arm
+          tips and placed the central electronics board on the frame. This was the first
+          point where the build existed as a physical system rather than a set of parts,
+          and the first point where the packaging problem became real.
+        </p>
+        <p>
+          Each motor has three phase leads, and at this stage all twelve were left
+          full-length and loose. They stayed that way until the board's final position was
+          settled, since a lead cut too short cannot be recovered and every lead's length
+          depends on where its pad ends up.
+        </p>
+        <p>
+          The mechanical concerns here are the ones that apply to any rotating hardware:
+          motors seated squarely on the arms, fasteners secure, and nothing positioned
+          where it could end up in the path of a propeller.
+        </p>
+      </div>
+
+      <div class="gallery gallery--wide" data-gallery>
+        <figure class="shot shot--tall">
+          <button class="shot__btn" type="button" data-lightbox
+                  data-full="../assets/images/fpv-drone/airframe-motors-installed-full.webp">
+            <img src="../assets/images/fpv-drone/airframe-motors-installed-thumb.webp"
+                 alt="The partially built drone on a workbench beside a soldering station, tip cleaner, and solder spool: four motors mounted on the carbon-fiber frame, the electronics board at the center, and long unrouted motor leads spreading out across the bench."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>Motors installed and the electronics board in place, with the motor leads still full-length. The soldering station is set up alongside for the next stage.</figcaption>
+        </figure>
+
+        <figure class="shot shot--tall">
+          <button class="shot__btn" type="button" data-lightbox
+                  data-full="../assets/images/fpv-drone/stack-mounted-leads-unrouted-full.webp">
+            <img src="../assets/images/fpv-drone/stack-mounted-leads-unrouted-thumb.webp"
+                 alt="Closer overhead view of the same stage: a brushless motor at each arm tip of the carbon-fiber frame, the flight-control board at the center, and each motor's three black phase leads still loose and untrimmed."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>Closer view of the same stage: four motors on the arms, the board at the center, and twelve phase leads not yet trimmed or routed.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ 03 — FLIGHT CONTROL & POWER INTEGRATION =============== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">03 &mdash; Flight control &amp; power integration</span>
+        <h2>The electronics board and the power input</h2>
+      </div>
+
+      <div class="hero__grid">
+        <div class="prose">
+          <p>
+            The central board carries the flight-control electronics and the pads the
+            motors are driven from, so it is where every connection on the aircraft ends
+            up. It sits in the middle of the frame on four grommeted mounting screws,
+            which keeps it on the aircraft's center line and gives all four motor runs a
+            similar path back to the board.
+          </p>
+          <p>
+            Power comes in through a single battery lead soldered to the board's power
+            pads. Alongside it is an electrolytic capacitor, rated 35&nbsp;V and
+            220&nbsp;&micro;F, soldered to the same input. A capacitor in that position is
+            standard practice on this kind of build: it helps absorb the voltage spikes and
+            electrical noise that the motor-drive electronics put back onto the supply.
+          </p>
+          <p>
+            The battery lead is the heaviest-gauge wire on the aircraft and carries the
+            current for all four motors, so these are the joints where a weak connection
+            matters most. Working on the board off the frame meant it could be held flat,
+            with clear access to the pads.
+          </p>
+        </div>
+
+        <div class="gallery" data-gallery>
+          <figure class="shot shot--tall">
+            <button class="shot__btn" type="button" data-lightbox
+                    data-full="../assets/images/fpv-drone/power-leads-soldered-full.webp">
+              <img src="../assets/images/fpv-drone/power-leads-soldered-thumb.webp"
+                   alt="The flight-control board on its own, off the frame, with a thick red and black battery lead and a cylindrical 35 V 220 microfarad electrolytic capacitor soldered to the power pads at one edge."
+                   loading="lazy" decoding="async">
+            </button>
+            <figcaption>The flight-control board off the frame, with the battery lead and a 35 V / 220 &micro;F capacitor soldered to its power pads.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================ 04 — SOLDERING & ELECTRICAL INTEGRATION ================ -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">04 &mdash; Soldering &amp; electrical integration</span>
+        <h2>Soldering the motors in</h2>
+        <p>
+          With the board in its final position, the motor leads could be cut to length and
+          soldered.
+        </p>
+      </div>
+
+      <div class="hero__grid">
+        <div class="prose">
+          <p>
+            Each of the four motors connects to the board through three phase leads, which
+            makes twelve motor joints on top of the power connections. Every one of them
+            lands on a small pad beside its neighbors, on a board with components packed
+            closely around it.
+          </p>
+          <p>The practical concerns at this stage were:</p>
+          <ul>
+            <li><strong>Sound joints.</strong> Solder fully wetting both pad and wire, since a marginal joint on a motor phase can pass a quick look and still fail under vibration.</li>
+            <li><strong>No bridges.</strong> Adjacent phase pads sit close together, and a stray bead of solder between them is a short.</li>
+            <li><strong>Lead length.</strong> Each lead trimmed to reach its pad without a long loop of spare wire, while leaving enough slack that the joint is not under tension.</li>
+            <li><strong>Routing.</strong> Leads kept close along the frame arms and clear of the propeller arcs, then secured with cable ties.</li>
+            <li><strong>Serviceability.</strong> Joints left accessible from above, so a motor can be desoldered and replaced without taking the rest of the electronics apart.</li>
+          </ul>
+          <p>
+            It is the least visible part of the build and the part the rest of it depends
+            on: all of the power and every motor command pass through these joints.
+          </p>
+        </div>
+
+        <div class="gallery" data-gallery>
+          <figure class="shot shot--tall">
+            <button class="shot__btn" type="button" data-lightbox
+                    data-full="../assets/images/fpv-drone/motor-solder-joints-full.webp">
+              <img src="../assets/images/fpv-drone/motor-solder-joints-thumb.webp"
+                   alt="Close-up of the flight-control board mounted on the carbon-fiber frame, showing groups of three motor phase leads soldered to pads at each corner, rubber grommets on the mounting screws, the capacitor at the right edge, and cable ties holding the leads to the arms."
+                   loading="lazy" decoding="async">
+            </button>
+            <figcaption>Motor phase leads soldered to the board's corner pads, with the capacitor at the right edge and cable ties securing the leads to the frame.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================== 05 — CURRENT STATE ======================== -->
+  <section class="section">
+    <div class="wrap">
+      <div class="section__head">
+        <span class="eyebrow">05 &mdash; Current state</span>
+        <h2>Integrated airframe and electronics</h2>
+        <p>
+          The build has moved from a layout of separate parts to a single assembled unit.
+        </p>
+      </div>
+
+      <div class="gallery gallery--wide" data-gallery style="margin-bottom:34px">
+        <figure class="shot">
+          <button class="shot__btn" type="button" data-lightbox
+                  data-full="../assets/images/fpv-drone/stack-mounted-leads-unrouted-full.webp">
+            <img src="../assets/images/fpv-drone/stack-mounted-leads-unrouted-thumb.webp"
+                 alt="Earlier stage for comparison: motors and the flight-control board in place on the frame, with the motor leads still long, loose, and unsoldered."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>Earlier fit-up: board in place, motor leads full-length and loose.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <button class="shot__btn" type="button" data-lightbox
+                  data-full="../assets/images/fpv-drone/integrated-airframe-full.webp">
+            <img src="../assets/images/fpv-drone/integrated-airframe-thumb.webp"
+                 alt="Current stage for comparison: the same frame with the motor leads trimmed, soldered, and cable-tied along each arm, and the battery lead soldered in and exiting one end of the frame."
+                 loading="lazy" decoding="async">
+          </button>
+          <figcaption>Current assembly: leads trimmed, soldered, and tied down along the arms; battery lead soldered in.</figcaption>
+        </figure>
+      </div>
+
+      <div class="prose">
+        <p>
+          The current assembly brings the carbon-fiber frame, all four brushless motors, the
+          flight-control board, and the battery lead together as one unit. The motor leads
+          are trimmed, soldered, and secured to each arm with cable ties, and the battery
+          lead is soldered in and exits from one end of the frame.
+        </p>
+        <p>
+          Comparing it with the earlier fit-up also shows a layout change. The board ended
+          up rotated a half turn from its first position, which moved the power pads and
+          capacitor to the other side and changed where the battery lead leaves the frame.
+          Placement decisions like that tend to settle only once the real wires are in hand
+          and their routing can be seen.
+        </p>
+        <p>
+          This is an integration milestone, not a finished aircraft. The flight controller
+          has not been configured, and the drone has not flown.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================ 06 — NEXT STEPS ========================== -->
+  <section class="section">
+    <div class="wrap prose">
+      <span class="eyebrow">06 &mdash; Next steps</span>
+      <h2>What comes next</h2>
+      <p>
+        The remaining work, roughly in order. None of it has been done yet; this page will
+        be updated as each stage is completed.
+      </p>
+      <ul>
+        <li><strong>Complete the hardware.</strong> Install the remaining components from the original layout, including the FPV camera, and finish assembling the frame.</li>
+        <li><strong>Verify the electrical work.</strong> Inspect every joint and check the power input for shorts before the system is powered from a flight battery.</li>
+        <li><strong>Configure the flight controller.</strong> Firmware setup, motor order and spin direction, and the control link.</li>
+        <li><strong>System checks.</strong> Bench testing with the propellers removed.</li>
+        <li><strong>Initial controlled testing.</strong> Short, controlled first flights in a safe environment.</li>
+        <li><strong>Tuning and refinement.</strong> Iterating on the setup based on what testing shows.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="pagenav" aria-label="Project navigation">
+      <a class="backlink" style="margin:0" href="robot-cell.html">&larr; FANUC robot cell</a>
+      <a class="btn" href="b36-peacemaker.html">Next: B-36 Peacemaker &rarr;</a>
+    </nav>
+  </div>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <span>&copy; <span id="year">2026</span> Bradley Schalk &middot; bradleyschalk.com</span>
+    <nav class="footer__links" aria-label="Footer">
+      <a href="index.html">Projects</a>
+      <a href="../about.html">About</a>
+      <a href="../resume.html">Resume</a>
+      <a href="mailto:bradschalk06@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/bradley-schalk" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+  <div class="lightbox__bar">
+    <span class="lightbox__count"></span>
+    <button class="lb-btn lightbox__close" type="button" aria-label="Close image viewer">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div class="lightbox__stage">
+    <button class="lb-btn lightbox__prev" type="button" aria-label="Previous image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+    </button>
+    <img alt="">
+    <button class="lb-btn lightbox__next" type="button" aria-label="Next image">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg>
+    </button>
+  </div>
+  <p class="lightbox__caption"></p>
+</div>
+
+<script src="../js/script.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
